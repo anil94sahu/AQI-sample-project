@@ -4,6 +4,7 @@ import { render } from "react-dom";
 // react table
 import ReactTable from "react-table-6";  
 import "react-table-6/react-table.css" 
+import { ChartWithStaticData } from "./bubbleChart";
 
 
 export default class ComparisonIndexes extends Component {
@@ -36,8 +37,9 @@ export default class ComparisonIndexes extends Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            data: result
+            data: result.map(e => e = {...e, color : this.getColor(e.aqi)})
           });
+          
         },
         (error) => {
           this.setState({
@@ -49,6 +51,7 @@ export default class ComparisonIndexes extends Component {
   }
 
   render() {
+    
     const columns = [
       {
         columns: [
@@ -74,6 +77,16 @@ export default class ComparisonIndexes extends Component {
           defaultPageSize={5}
           className="-striped -highlight"
         />
+        <div>
+          {
+            (this.state.data.length >  0)?
+                <ChartWithStaticData data = {this.state.data}></ChartWithStaticData>: null
+          }
+         
+           
+          
+        </div>
+     
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ComparisonIndexes from './comparisonIndexes';
+import { ChartWithStaticData } from './bubbleChart';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
           
       </header>
       <ComparisonIndexes></ComparisonIndexes>
+      
     </div>
   );
 }
