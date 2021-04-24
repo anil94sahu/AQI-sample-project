@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import PieChart from './pieChart';
 
 export class ChartWithStaticData extends React.PureComponent {
   constructor(props) {
@@ -7,6 +8,7 @@ export class ChartWithStaticData extends React.PureComponent {
     this.chartInstance = null;
     this.onRef = this.onRef.bind(this);
     const {name, aqi} = this.props.data;
+    this.state = {pieData:''};
   }
 
   onRef(chart) {
@@ -29,8 +31,8 @@ export class ChartWithStaticData extends React.PureComponent {
     responsive: true,
     maintainAspectRatio: false,
     onClick: function(evt, element) {
-        console.log(element);
-    },
+        this.setState({pieData : this.data})
+    }.bind(this),
     tooltips: {
       enabled: false,
     },
@@ -86,6 +88,9 @@ export class ChartWithStaticData extends React.PureComponent {
           options={this.options}
           ref={this.onRef}
         />
+        {
+          this.pieData ? <PieChart data = {this.pieData}></PieChart> : null
+        }
       </div>
     )
   }

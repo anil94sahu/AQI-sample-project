@@ -82,9 +82,6 @@ export default class ComparisonIndexes extends Component {
             (this.state.data.length >  0)?
                 <ChartWithStaticData data = {this.state.data}></ChartWithStaticData>: null
           }
-         
-           
-          
         </div>
      
       </div>
