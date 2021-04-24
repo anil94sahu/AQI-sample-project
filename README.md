@@ -67,5 +67,7 @@ There are 2 folder :
   
   Please first run the server then run the code.
   
+  We are connected with live database clever-cloud
+  
   Thanks
   
